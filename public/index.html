@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapo Grid Map</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<style>
+  #map {
+      height: 70vh; /* 이전에 100vh였던 부분을 70vh로 변경 */
+      width: 80%;
+  }
+    
+  body {
+      padding: 20px; /* 버튼들이 위치할 수 있도록 body에 패딩 추가 */
+  }
+
+  button {
+    padding: 12px 24px; /* 버튼 주변 여백 조정 */
+    font-size: 16px; /* 버튼 텍스트 크기 조정 */
+    margin: 8px; /* 버튼 사이 간격 추가 */
+    background-color: #ff604e; /* 배경색 */
+    color: white; /* 텍스트 색상 */
+    border: none; /* 테두리 제거 */
+    border-radius: 6px; /* 버튼 모서리 둥글게 */
+    cursor: pointer; /* 커서를 포인터로 변경하여 클릭 가능함을 나타냄 */
+    transition: background-color 0.3s ease; /* 배경색 변화에 부드러운 전환 효과 추가 */
+  }
+  
+  button:hover {
+      background-color: #ff3535; /* 호버 시 배경색 변경 */
+  }
+
+  #weekendBtn {
+    background-color: #ff604e; /* 배경색 */
+    color: white; /* 텍스트 색상 */
+  }
+  #weekendBtn:hover {
+    background-color: #ff3535; /* 호버 시 배경색 변경 */
+  }
+  
+  /* 14세 이하 버튼 스타일 */
+  #age14Btn {
+    background-color: #1395ff; /* 배경색 */
+    color: white; /* 텍스트 색상 */
+  }
+
+  /* 14세 이하 버튼 호버 시 스타일 */
+  #age14Btn:hover {
+    background-color: #2c25ff; /* 호버 시 배경색 변경 */
+  }
+
+  #age20_50Btn {
+    background-color: #4CAF50;
+    color: white;
+  }
+
+  #age20_50Btn:hover {
+    background-color: #36a43b;
+  }
+  
+  #age65Btn {
+    background-color: #c14700;
+    color: white;
+  }
+
+  #age65Btn:hover {
+    background-color: #772d00;
+  }
+  
+    
+  #age20_60Btn {
+    background-color: #2e2e2e;
+    color: white;
+  }
+
+  #age20_60Btn:hover {
+    background-color: #1f1f1f;
+  }
+</style>
+<title>마포구 유동인구</title>
+</head>
+<body>
+  <h1>마포구 유동인구</h1>
+  <div id="map"></div>
+
+<!-- 버튼 추가 -->
+<button id="weekendBtn">주중 유동인구</button>
+<button id="age14Btn">14세 이하</button>
+<button id="age20_50Btn">20대 ~ 50대</button>
+<button id="age65Btn">65세 이상</button>
+<button id="age20_60Btn">20세 이상 60세 미만</button>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+  // 지도 초기화
+  const map = L.map('map').setView([37.56070556, 126.9105306], 13);
+
+  // OpenStreetMap 타일 레이어 추가
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  // 마포구와 인근 지역의 범위 (대략적인 좌표)
+  const mapoBounds = {
+    north: 37.60,  
+    south: 37.52,  
+    west: 126.85,  
+    east: 126.97   
+  };
+
+  // 격자 수 계산 (총 300개 이상 격자)
+  const totalGrids = 300;
+  const latDiff = mapoBounds.north - mapoBounds.south;
+  const lngDiff = mapoBounds.east - mapoBounds.west;
+
+  const cellSizeLat = Math.sqrt((latDiff * lngDiff) / totalGrids);
+  const cellSizeLng = cellSizeLat;
+
+  // 마포구 지역의 좌표들
+  const coordinatesToKeep = [
+    "11,5", "11,6", "11,7", "11,8",
+    "10,4", "10,5", "10,6", "10,7", "10,8", "10,9",
+    "9,3", "9,4", "9,5", "9,6", "9,7", "9,8", "9,9",
+    "8,4", "8,5", "8,6", "8,7", "8,8", "8,9", "8,10", "8,11",
+    "7,6", "7,7", "7,8", "7,9", "7,10", "7,11", "7,12", "7,13",
+    "6,8", "6,9", "6,10", "6,11", "6,12", "6,13", "6,14", "6,15", "6,16", "6,17", "6,18",
+    "5,9", "5,10", "5,11", "5,12", "5,13", "5,14", "5,15", "5,16", "5,17", "5,18", "5,19",
+    "4,10", "4,11", "4,12", "4,13", "4,14", "4,15", "4,16", "4,17", "4,18",
+    "3,15", "3,16", "3,17", "3,18"
+  ];
+
+  // 지역 ID와 색상 정의
+  const regions = {
+    "디지털미디어시티인근주거밀집지역": ["11,6", "10,6", "10,7", "10,8", "9,6", "9,7", "9,8"],
+    "성산시영아파트인근": ["9,9", "8,9", "8,10"],
+    "DMC청구아파트인근": ["11,8", "10,8", "10,9"],
+    "합정역메세나폴리스인근": ["5,9", "5,10", "5,11", "5,12", "4,11", "4,12"],
+    "서교동2": ["6,11", "6,12", "5,11", "5,12"],
+    "연남동빌라밀집지역": ["7,11", "7,12", "6,11", "6,12"],
+    "서교동1": ["6,12", "6,13", "5,12", "5,13"],
+    "대흥역인근": ["5,15", "5,16", "4,15", "4,16", "4,17", "3,16", "3,17"],
+    "마포자이아파트인근": ["6,16", "6,17", "5,17", "5,18", "5,19"],
+    "서울여자고등학교인근": ["6,8", "6,9", "6,10", "6,11", "6,12", "5,9", "5,10", "5,11", "5,12"]
+  };
+
+  // 격자 셀 추가 함수 (색상 변수 범위 수정 및 이전 격자 초기화)
+  function addGridCells(averageDatas, mode) {
+    // 이전에 추가된 격자 레이어와 격자 아이디 마커를 모두 제거
+    map.eachLayer(layer => {
+      if (layer instanceof L.Rectangle || layer instanceof L.Marker) {
+        map.removeLayer(layer);
+      }
+    });
+
+    let row = 0;
+    for (let lat = mapoBounds.south; lat < mapoBounds.north; lat += cellSizeLat) {
+      let col = 0;
+      for (let lng = mapoBounds.west; lng < mapoBounds.east; lng += cellSizeLng) {
+        const cellId = `${row},${col}`;
+
+        // 만약 현재 격자의 ID가 coordinatesToKeep 배열에 포함되어 있다면 격자 추가
+        if (coordinatesToKeep.includes(cellId)) {
+          let fillOpacity = 0.1;
+          let color = ""; // 기본 색상
+
+          if (mode === 'weekend') {
+            color = "red"; // 주말 데이터 모드에서의 색상
+            
+            // 격자가 속한 지역이 있다면 해당 지역의 주말 평균값을 가져와서 투명도 계산
+            for (const [region, ids] of Object.entries(regions)) {
+              if (ids.includes(cellId)) {
+                const regionWeekend = averageDatas[region] || 0; // 해당 지역의 주말 평균값 가져오기
+                fillOpacity += (regionWeekend % 5000) / 5000; // 10000으로 나눈 나머지를 투명도에 더하기
+              }
+            }
+          } else if (mode === '_14age') {
+            color = "blue"; // 14세 이하 데이터 모드에서의 색상
+
+            // 격자가 속한 지역이 있다면 해당 지역의 14세 이하 평균값을 가져와서 투명도 계산
+            for (const [region, ids] of Object.entries(regions)) {
+              if (ids.includes(cellId)) {
+                const region14age = averageDatas[region] || 0;
+                fillOpacity += (region14age % 100) / 100; // 100으로 나눈 나머지를 투명도에 더하기
+              }
+            }
+          }
+          else if (mode === '_20_50T21_'){
+            color = "green"; // _20_50T21_세 이하 데이터 모드에서의 색상
+
+            // 격자가 속한 지역이 있다면 해당 지역의 _20_50T21_ 평균값을 가져와서 투명도 계산
+            for (const [region, ids] of Object.entries(regions)) {
+              if (ids.includes(cellId)) {
+                const region_20_50T21_ = averageDatas[region] || 0;
+                fillOpacity += (region_20_50T21_ % 100) / 100; // 100으로 나눈 나머지를 투명도에 더하기
+              }
+            }
+          }
+          else if (mode === '_65age_'){
+            color = "brown"; // _65age_ 이하 데이터 모드에서의 색상
+
+            // 격자가 속한 지역이 있다면 해당 지역의 _65age_ 평균값을 가져와서 투명도 계산
+            for (const [region, ids] of Object.entries(regions)) {
+              if (ids.includes(cellId)) {
+                const region_65age_ = averageDatas[region] || 0;
+                fillOpacity += (region_65age_ % 100) / 100; // 100으로 나눈 나머지를 투명도에 더하기
+              }
+            }
+          }
+          else if (mode === '_20_60T9_18'){
+            color = "black"; // _20_60T9_18 이하 데이터 모드에서의 색상
+
+            // 격자가 속한 지역이 있다면 해당 지역의 _20_60T9_18 평균값을 가져와서 투명도 계산
+            for (const [region, ids] of Object.entries(regions)) {
+              if (ids.includes(cellId)) {
+                const region_20_60T9_18 = averageDatas[region] || 0;
+                fillOpacity += (region_20_60T9_18 % 100) / 100; // 100으로 나눈 나머지를 투명도에 더하기
+              }
+            }
+          }
+          // 투명도가 1을 넘지 않도록 제한
+          fillOpacity = Math.min(fillOpacity, 0.8);
+
+          // 격자 추가
+          const cell = L.rectangle([
+            [lat, lng],
+            [lat + cellSizeLat, lng + cellSizeLng]
+          ], {
+            color: color,
+            weight: 1,
+            fillOpacity: fillOpacity,
+            id: cellId
+          }).addTo(map);
+
+          // 격자의 중심 좌표를 계산
+          const centerLat = lat + cellSizeLat / 2;
+          const centerLng = lng + cellSizeLng / 2;
+
+        }
+
+        col++;
+      }
+      row++;
+    }
+  }
+
+
+  // 주말 데이터를 처리하고 격자에 반영하는 함수
+  function processWeekendData() {
+    fetch('/data')
+      .then(response => response.json())
+      .then(data => {
+        console.log('데이터를 정상적으로 가져왔습니다.');
+        console.log(data);  // 콘솔에 데이터 출력
+
+        // 각 주소별 주말 값의 총합과 개수를 저장할 객체
+        const weekendSums = {};
+        const weekendCounts = {};
+
+        // 데이터 배열을 순회하면서 주말 값의 총합과 개수를 계산
+        data.forEach(item => {
+          const addr = item.addr;
+          const weekendValue = parseFloat(item.weekend);
+
+          // 주소별로 주말 값의 총합과 개수를 업데이트
+          if (!isNaN(weekendValue)) {
+            if (!weekendSums[addr]) {
+              weekendSums[addr] = weekendValue;
+              weekendCounts[addr] = 1;
+            } else {
+              weekendSums[addr] += weekendValue;
+              weekendCounts[addr] += 1;
+            }
+          }
+        });
+
+        // 각 주소별 주말 값의 평균을 계산하고 격자의 배경색을 설정
+        const averageWeekends = {};
+        for (const addr in weekendSums) {
+          const averageWeekend = weekendSums[addr] / weekendCounts[addr];
+          averageWeekends[addr] = averageWeekend;
+        }
+
+        // 모든 지역에 대한 데이터를 가져오도록 수정
+        for (const region in regions) {
+          if (!averageWeekends.hasOwnProperty(region)) {
+            averageWeekends[region] = 0; // 기본값으로 0 설정 또는 다른 값으로 설정 가능
+          }
+        }
+        console.log(averageWeekends);
+        // 격자의 배경색을 설정하고 추가
+        addGridCells(averageWeekends , 'weekend');
+      })
+      .catch(error => {
+        console.error('데이터를 가져오는 중 오류가 발생했습니다:', error);
+      });
+  }
+
+  // 14세 이하 유동인구 데이터를 처리하고 격자에 반영하는 함수 (수정된 부분 포함)
+  function processAverage_14ageData() {
+    fetch('/data')
+      .then(response => response.json())
+      .then(data => {
+        console.log('데이터를 정상적으로 가져왔습니다.');
+        console.log(data);  // 콘솔에 데이터 출력
+
+        // 각 주소별 14세 이하 값의 총합과 개수를 저장할 객체
+        const _14ageSum = {};
+        const _14ageCount = {};
+
+        // 데이터 배열을 순회하면서 14세 이하 값의 총합과 개수를 계산
+        data.forEach(item => {
+          const addr = item.addr;
+          const _14age = parseFloat(item._14age);
+
+          // 주소별로 14세 이하 값의 총합과 개수를 업데이트
+          if (!isNaN(_14age)) {
+            if (!_14ageSum[addr]) {
+              _14ageSum[addr] = _14age;
+              _14ageCount[addr] = 1;
+            } else {
+              _14ageSum[addr] += _14age;
+              _14ageCount[addr] += 1;
+            }
+          }
+        });
+
+        // 각 주소별 14세 이하 값의 평균을 계산하고 격자의 배경색을 설정
+        const average_14age = {};
+        for (const addr in _14ageSum) {
+          const average = _14ageSum[addr] / _14ageCount[addr];
+          average_14age[addr] = average;
+        }
+
+        // 모든 지역에 대한 데이터를 가져오도록 수정
+        for (const region in regions) {
+          if (!average_14age.hasOwnProperty(region)) {
+            average_14age[region] = 0; // 기본값으로 0 설정 또는 다른 값으로 설정 가능
+          }
+        }
+        console.log(average_14age);
+        // 격자의 배경색을 설정하고 추가
+        addGridCells(average_14age, '_14age');
+      })
+      .catch(error => {
+        console.error('데이터를 가져오는 중 오류가 발생했습니다:', error);
+      });
+  }
+
+  // _20_50T21_세 이하 유동인구 데이터를 처리하고 격자에 반영하는 함수 (수정된 부분 포함)
+  function processAverage_20_50T21_Data() {
+    fetch('/data')
+      .then(response => response.json())
+      .then(data => {
+        console.log('데이터를 정상적으로 가져왔습니다.');
+        console.log(data);  // 콘솔에 데이터 출력
+
+        // 각 주소별 _20_50T21_세 이하 값의 총합과 개수를 저장할 객체
+        const _20_50T21_Sum = {};
+        const _20_50T21_Count = {};
+
+        // 데이터 배열을 순회하면서 14세 이하 값의 총합과 개수를 계산
+        data.forEach(item => {
+          const addr = item.addr;
+          const _20_50T21_ = parseFloat(item._20_50T21_);
+
+          // 주소별로 14세 이하 값의 총합과 개수를 업데이트
+          if (!isNaN(_20_50T21_)) {
+            if (!_20_50T21_Sum[addr]) {
+              _20_50T21_Sum[addr] = _20_50T21_;
+              _20_50T21_Count[addr] = 1;
+            } else {
+              _20_50T21_Sum[addr] += _20_50T21_;
+              _20_50T21_Count[addr] += 1;
+            }
+          }
+        });
+
+        // 각 주소별 14세 이하 값의 평균을 계산하고 격자의 배경색을 설정
+        const average_20_50T21_ = {};
+        for (const addr in _20_50T21_Sum) {
+          const average =_20_50T21_Sum[addr] / _20_50T21_Count[addr];
+          average_20_50T21_[addr] = average;
+        }
+
+        // 모든 지역에 대한 데이터를 가져오도록 수정
+        for (const region in regions) {
+          if (!average_20_50T21_.hasOwnProperty(region)) {
+            average_20_50T21_[region] = 0; // 기본값으로 0 설정 또는 다른 값으로 설정 가능
+          }
+        }
+        console.log(average_20_50T21_);
+        // 격자의 배경색을 설정하고 추가
+        addGridCells(average_20_50T21_, '_20_50T21_');
+      })
+      .catch(error => {
+        console.error('데이터를 가져오는 중 오류가 발생했습니다:', error);
+      });
+  }
+
+  // _65age_ 이하 유동인구 데이터를 처리하고 격자에 반영하는 함수 (수정된 부분 포함)
+  function processAverage_65age_Data() {
+    fetch('/data')
+      .then(response => response.json())
+      .then(data => {
+        console.log('데이터를 정상적으로 가져왔습니다.');
+        console.log(data);  // 콘솔에 데이터 출력
+
+        // 각 주소별 _65age_ 이하 값의 총합과 개수를 저장할 객체
+        const _65age_Sum = {};
+        const _65age_Count = {};
+
+        // 데이터 배열을 순회하면서 14세 이하 값의 총합과 개수를 계산
+        data.forEach(item => {
+          const addr = item.addr;
+          const _65age_ = parseFloat(item._65age_);
+
+          // 주소별로 14세 이하 값의 총합과 개수를 업데이트
+          if (!isNaN(_65age_)) {
+            if (!_65age_Sum[addr]) {
+              _65age_Sum[addr] = _65age_;
+              _65age_Count[addr] = 1;
+            } else {
+              _65age_Sum[addr] += _65age_;
+              _65age_Count[addr] += 1;
+            }
+          }
+        });
+
+        // 각 주소별 14세 이하 값의 평균을 계산하고 격자의 배경색을 설정
+        const average_65age_ = {};
+        for (const addr in _65age_Sum) {
+          const average =_65age_Sum[addr] / _65age_Count[addr];
+          average_65age_[addr] = average;
+        }
+
+        // 모든 지역에 대한 데이터를 가져오도록 수정
+        for (const region in regions) {
+          if (!average_65age_.hasOwnProperty(region)) {
+            average_65age_[region] = 0; // 기본값으로 0 설정 또는 다른 값으로 설정 가능
+          }
+        }
+        console.log(average_65age_);
+        // 격자의 배경색을 설정하고 추가
+        addGridCells(average_65age_, '_65age_');
+      })
+      .catch(error => {
+        console.error('데이터를 가져오는 중 오류가 발생했습니다:', error);
+      });
+  }
+
+   // _20_60T9_18 이하 유동인구 데이터를 처리하고 격자에 반영하는 함수 (수정된 부분 포함)
+   function processAverage_20_60T9_18Data() {
+    fetch('/data')
+      .then(response => response.json())
+      .then(data => {
+        console.log('데이터를 정상적으로 가져왔습니다.');
+        console.log(data);  // 콘솔에 데이터 출력
+
+        // 각 주소별 _20_60T9_18 이하 값의 총합과 개수를 저장할 객체
+        const _20_60T9_18Sum = {};
+        const _20_60T9_18Count = {};
+
+        // 데이터 배열을 순회하면서 14세 이하 값의 총합과 개수를 계산
+        data.forEach(item => {
+          const addr = item.addr;
+          const _20_60T9_18 = parseFloat(item._20_60T9_18);
+
+          // 주소별로 14세 이하 값의 총합과 개수를 업데이트
+          if (!isNaN(_20_60T9_18)) {
+            if (!_20_60T9_18Sum[addr]) {
+              _20_60T9_18Sum[addr] = _20_60T9_18;
+              _20_60T9_18Count[addr] = 1;
+            } else {
+              _20_60T9_18Sum[addr] += _20_60T9_18;
+              _20_60T9_18Count[addr] += 1;
+            }
+          }
+        });
+
+        // 각 주소별 14세 이하 값의 평균을 계산하고 격자의 배경색을 설정
+        const average_20_60T9_18 = {};
+        for (const addr in _20_60T9_18Sum) {
+          const average =_20_60T9_18Sum[addr] / _20_60T9_18Count[addr];
+          average_20_60T9_18[addr] = average;
+        }
+
+        // 모든 지역에 대한 데이터를 가져오도록 수정
+        for (const region in regions) {
+          if (!average_20_60T9_18.hasOwnProperty(region)) {
+            average_20_60T9_18[region] = 0; // 기본값으로 0 설정 또는 다른 값으로 설정 가능
+          }
+        }
+        console.log(average_20_60T9_18);
+        // 격자의 배경색을 설정하고 추가
+        addGridCells(average_20_60T9_18, '_20_60T9_18');
+      })
+      .catch(error => {
+        console.error('데이터를 가져오는 중 오류가 발생했습니다:', error);
+      });
+  }
+  // 주중 유동인구 버튼 클릭 시 이벤트 리스너
+  const weekendBtn = document.getElementById('weekendBtn');
+  weekendBtn.addEventListener('click', function() {
+    console.log('주중 유동인구 버전을 보여줍니다.');
+    processWeekendData();
+  });
+
+  // 14세 이하 유동인구 데이터를 처리하는 함수 (예시)
+  function process14AgeData() {
+    console.log('14세 이하 버전을 보여줍니다.');
+    // 여기에 14세 이하 유동인구 데이터를 처리하는 로직을 추가합니다.
+    processAverage_14ageData();
+  }
+
+  // 20대 ~ 50대 유동인구 데이터를 처리하는 함수 (예시)
+  function process20_50T21Data() {
+    console.log('20대 ~ 50대 버전을 보여줍니다.');
+    // 여기에 20대 ~ 50대 유동인구 데이터를 처리하는 로직을 추가합니다.
+    processAverage_20_50T21_Data() ;
+  }
+
+  // 65세 이상 유동인구 데이터를 처리하는 함수 (예시)
+  function process65AgeData() {
+    console.log('65세 이상 버전을 보여줍니다.');
+    // 여기에 65세 이상 유동인구 데이터를 처리하는 로직을 추가합니다.
+    processAverage_65age_Data();
+  }
+
+  // 20세 이상 60세 미만 유동인구 데이터를 처리하는 함수 (예시)
+  function process20_60T9_18Data() {
+    console.log('20세 이상 60세 미만 버전을 보여줍니다.');
+    // 여기에 20세 이상 60세 미만 유동인구 데이터를 처리하는 로직을 추가합니다.
+    processAverage_20_60T9_18Data();
+  }
+
+  // 그 외 버튼들에 대한 클릭 이벤트 리스너 등록
+  const age14Btn = document.getElementById('age14Btn');
+  age14Btn.addEventListener('click', function() {
+    process14AgeData();
+  });
+
+  const age20_50Btn = document.getElementById('age20_50Btn');
+  age20_50Btn.addEventListener('click', function() {
+    process20_50T21Data();
+  });
+
+  const age65Btn = document.getElementById('age65Btn');
+  age65Btn.addEventListener('click', function() {
+    process65AgeData();
+  });
+
+  const age20_60Btn = document.getElementById('age20_60Btn');
+  age20_60Btn.addEventListener('click', function() {
+    process20_60T9_18Data();
+  });
+</script>
+
+
+</body>
+</html>

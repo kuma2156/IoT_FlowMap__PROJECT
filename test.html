@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapo Grid Map</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<style>
+  #map {
+    height: 100vh;
+    width: 100%;
+  }
+  .grid-cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+</style>
+</head>
+<body>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+<script>
+  // 지도 초기화
+  const map = L.map('map').setView([37.56070556, 126.9105306], 13);
+
+  // OpenStreetMap 타일 레이어 추가
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+  }).addTo(map);
+
+  // 마포구와 인근 지역의 범위 (대략적인 좌표)
+  const mapoBounds = {
+    north: 37.60,  
+    south: 37.52,  
+    west: 126.85,  
+    east: 126.97   
+  };
+
+  // 격자 수 계산 (총 300개 이상 격자)
+  const totalGrids = 300;
+  const latDiff = mapoBounds.north - mapoBounds.south;
+  const lngDiff = mapoBounds.east - mapoBounds.west;
+
+  const cellSizeLat = Math.sqrt((latDiff * lngDiff) / totalGrids);
+  const cellSizeLng = cellSizeLat;
+
+  // 마포구 지역의 좌표들
+  const coordinatesToKeep = [
+    "11,5", "11,6", "11,7", "11,8",
+    "10,4", "10,5", "10,6", "10,7", "10,8", "10,9",
+    "9,3", "9,4", "9,5", "9,6", "9,7", "9,8", "9,9",
+    "8,4", "8,5", "8,6", "8,7", "8,8", "8,9", "8,10", "8,11",
+    "7,6", "7,7", "7,8", "7,9", "7,10", "7,11", "7,12", "7,13",
+    "6,8", "6,9", "6,10", "6,11", "6,12", "6,13", "6,14", "6,15", "6,16", "6,17", "6,18",
+    "5,9", "5,10", "5,11", "5,12", "5,13", "5,14", "5,15", "5,16", "5,17", "5,18", "5,19",
+    "4,10", "4,11", "4,12", "4,13", "4,14", "4,15", "4,16", "4,17", "4,18",
+    "3,15", "3,16", "3,17", "3,18"
+  ];
+
+  // 지역 ID와 색상 정의
+  const regions = {
+    "디지털미디어시티인근주거밀집지역": ["11,6", "10,6", "10,7", "10,8", "9,6", "9,7", "9,8"],
+    "성산시영아파트인근": ["9,9", "8,9", "8,10"],
+    "DMC청구아파트인근": ["11,8", "10,8", "10,9"],
+    "합정역메세나폴리스인근": ["5,9", "5,10", "5,11", "5,12", "4,11", "4,12"],
+    "서교동2": ["6,11", "6,12", "5,11", "5,12"],
+    "연남동빌라밀집지역": ["7,11", "7,12", "6,11", "6,12"],
+    "서교동1": ["6,12", "6,13", "5,12", "5,13"],
+    "대흥역인근": ["5,15", "5,16", "4,15", "4,16", "4,17", "3,16", "3,17"],
+    "마포자이아파트인근": ["6,16", "6,17", "5,17", "5,18", "5,19"],
+    "서울여자고등학교인근": ["6,8", "6,9", "6,10", "6,11", "6,12", "5,9", "5,10", "5,11", "5,12"]
+  };
+
+  function addGridCells() {
+    let row = 0;
+    for (let lat = mapoBounds.south; lat < mapoBounds.north; lat += cellSizeLat) {
+      let col = 0;
+      for (let lng = mapoBounds.west; lng < mapoBounds.east; lng += cellSizeLng) {
+        const cellId = `${row},${col}`;
+  
+        // 만약 현재 격자의 ID가 coordinatesToKeep 배열에 포함되어 있다면 격자 추가
+        if (coordinatesToKeep.includes(cellId)) {
+          let fillOpacity = 0.0;
+          let color = "red"; // 기본 색상
+          let overlapCount = 0; // 겹치는 횟수
+  
+          // 색상 및 투명도 설정
+          for (const [region, ids] of Object.entries(regions)) {
+            if (ids.includes(cellId)) {
+              fillOpacity += 0.2; // 겹칠 때마다 투명도 증가
+              overlapCount++;
+            }
+          }
+  
+          // 겹치는 셀의 경우 색상 진하게 설정
+          if (overlapCount > 1) {
+            fillOpacity = Math.min(fillOpacity, 1.0); // 투명도 최대값 1.0
+          }
+  
+          // 격자 추가
+          const cell = L.rectangle([
+            [lat, lng],
+            [lat + cellSizeLat, lng + cellSizeLng]
+          ], {
+            color: color,
+            weight: 1,
+            fillOpacity: fillOpacity,
+            id: cellId
+          }).addTo(map);
+  
+          // 격자의 중심 좌표를 계산
+          const centerLat = lat + cellSizeLat / 2;
+          const centerLng = lng + cellSizeLng / 2;
+  
+          // 격자의 중심에 숫자를 표시
+          L.marker([centerLat, centerLng], {
+            icon: L.divIcon({
+              className: 'grid-cell',
+              html: cellId
+            })
+          }).addTo(map);
+        }
+  
+        col++;
+      }
+      row++;
+    }
+  }
+
+  // 마포구 및 인근 지역 격자 추가
+  addGridCells();
+</script>
+
+</body>
+</html>

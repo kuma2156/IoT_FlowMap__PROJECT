@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Population Data</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Population Data</h1>
+    <table>
+        <tr>
+            <th>grid_id</th>
+            <th>_left</th>
+            <th>top</th>
+            <th>_right</th>
+            <th>bottom</th>
+            <th>_14age</th>
+            <th>_20_50T21_</th>
+            <th>_65age_</th>
+            <th>_20_60T9_18</th>
+            <th>weekend</th>
+            <th>addr</th>
+        </tr>
+        <% rows.forEach(row => { %>
+            <tr>
+                <td><%= row.grid_id %></td>
+                <td><%= row._left %></td>
+                <td><%= row.top %></td>
+                <td><%= row._right %></td>
+                <td><%= row.bottom %></td>
+                <td><%= row._14age %></td>
+                <td><%= row._20_50T21_ %></td>
+                <td><%= row._65age_ %></td>
+                <td><%= row._20_60T9_18 %></td>
+                <td><%= row.weekend %></td>
+                <td><%= row.addr %></td>
+            </tr>
+        <% }); %>
+    </table>
+</body>
+</html>
