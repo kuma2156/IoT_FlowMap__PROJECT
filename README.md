@@ -14,16 +14,16 @@
 <h2> 🚀 기술 스택 </h2>
 
 ### 🖥️ 프론트엔드 (Frontend)
-<table>
+<table style="background:white; padding:10px; border-radius:8px;">
     <tr>
         <td align="center">
-            <img src="https://github.com/user-attachments/assets/550267f4-4905-4930-83bb-db7e75cec752" width="64" height="64" style="background:white; padding:10px; border-radius:8px;">
+            <img src="https://github.com/user-attachments/assets/550267f4-4905-4930-83bb-db7e75cec752" width="64" height="64">
         </td>
         <td align="center">
-            <img src="https://github.com/user-attachments/assets/310a960e-c1fd-4540-aa44-5e9033c984c4" width="64" height="64" style="background:white; padding:10px; border-radius:8px;">
+            <img src="https://github.com/user-attachments/assets/5f15faf6-4e44-448e-b280-03d43afb0b01" width="64" height="64">
         </td>
         <td align="center">
-            <img src="https://github.com/user-attachments/assets/54e0e622-bca4-4529-b320-84fb136dc654" width="64" height="64" style="background:white; padding:10px; border-radius:8px;">
+            <img src="https://github.com/user-attachments/assets/54e0e622-bca4-4529-b320-84fb136dc654" width="64" height="64">
         </td>
     </tr>
     <tr>
@@ -39,16 +39,16 @@
 ---
 
 ### ⚙️ 백엔드 (Backend)
-<table>
+<table style="background:white; padding:10px; border-radius:8px;">
     <tr>
         <td align="center">
-            <img src="https://github.com/user-attachments/assets/56bfb902-2444-4e04-9d8e-b3fbf88dff4a" width="64" height="64" style="background:white; padding:10px; border-radius:8px;">
+            <img src="https://github.com/user-attachments/assets/56bfb902-2444-4e04-9d8e-b3fbf88dff4a" width="64" height="64">
         </td>
         <td align="center">
-            <img src="https://github.com/user-attachments/assets/f7aad108-b61c-41a7-94aa-d36c2e937840" width="64" height="64" style="background:white; padding:10px; border-radius:8px;">
+            <img src="https://github.com/user-attachments/assets/f7aad108-b61c-41a7-94aa-d36c2e937840" width="64" height="64">
         </td>
         <td align="center">
-            <img src="https://github.com/user-attachments/assets/5adb96a2-44a7-404c-881d-8c0fb9038062" width="64" height="64" style="background:white; padding:10px; border-radius:8px;">
+            <img src="https://github.com/user-attachments/assets/5adb96a2-44a7-404c-881d-8c0fb9038062" width="64" height="64">
         </td>
     </tr>
     <tr>
@@ -65,10 +65,10 @@
 ---
 
 ### 🗄️ 데이터베이스 (Database)
-<table>
+<table style="background:white; padding:10px; border-radius:8px;">
     <tr>
         <td align="center">
-            <img src="https://github.com/user-attachments/assets/fc3295ef-a7ad-4bc6-a680-92acf3598804" width="64" height="64" style="background:white; padding:10px; border-radius:8px;">
+            <img src="https://github.com/user-attachments/assets/fc3295ef-a7ad-4bc6-a680-92acf3598804" width="64" height="64">
         </td>
     </tr>
     <tr>
@@ -81,13 +81,13 @@
 ---
 
 ### ☁️ 배포 및 기타 (Deployment & DevOps)
-<table>
+<table style="background:white; padding:10px; border-radius:8px;">
     <tr>
         <td align="center">
-            <img src="https://github.com/user-attachments/assets/0fa64331-57cd-4550-9228-49581d9898e0" width="64" height="64" style="background:white; padding:10px; border-radius:8px;">
+            <img src="https://github.com/user-attachments/assets/0fa64331-57cd-4550-9228-49581d9898e0" width="64" height="64">
         </td>
         <td align="center">
-            <img src="https://github.com/user-attachments/assets/67ebb9cf-313a-419f-9edc-5654750bad30" width="64" height="64" style="background:white; padding:10px; border-radius:8px;">
+            <img src="https://github.com/user-attachments/assets/67ebb9cf-313a-419f-9edc-5654750bad30" width="64" height="64">
         </td>
     </tr>
     <tr>
