@@ -6,6 +6,9 @@
         <tr>
             <td align="center"><img src="https://github.com/user-attachments/assets/e2a679f3-88d7-4a0e-b0fb-fbbd4e6ac7ef" width="550"></td>
         </tr>
+        <tr>
+            <td align="center"><b>IOT 공공데이터를 활용한 서울시 마포구 유동인구 시각화 프로젝트</b></td>
+        </tr>
     </table>
 </div>
 <div align="left">
