@@ -25,7 +25,7 @@
             <td align="center"><b>김명규</b></td>
         </tr>
         <tr>
-            <td align="center"><b>[제작기간 | 2024.05-11 ~2024.06-20](https://github.com/kuma2156)</b></td>
+            <td align="center"><b>https://github.com/kuma2156</b></td>
         </tr>
     </table>
 </div>
