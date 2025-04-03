@@ -4,7 +4,7 @@
     <h1>🛠 IOT를 활용한 마포구 유동인구 시각화(공공데이터)</h1>
     <table>
         <tr>
-            <td align="center"><img src="https://github.com/user-attachments/assets/7dc23adb-b0df-4aea-9229-c98331ed307c" width="750"></td>
+            <td align="center"><img src="https://github.com/user-attachments/assets/16049850-5a26-4962-9c3d-ede2c1d91b2c" width="750"></td>
         </tr>
     </table>
 </div>
@@ -20,7 +20,7 @@
             <img src="https://github.com/user-attachments/assets/550267f4-4905-4930-83bb-db7e75cec752" width="64" height="64">
         </td>
         <td align="center">
-            <img src="https://github.com/user-attachments/assets/40997de9-0b8b-4a94-8ef6-7015ed871edc" width="64" height="64">
+            <img src="https://github.com/user-attachments/assets/7397ce48-e042-4302-9388-763313058afb" width="64" height="64">
         </td>
         <td align="center">
             <img src="https://github.com/user-attachments/assets/54e0e622-bca4-4529-b320-84fb136dc654" width="64" height="64">
