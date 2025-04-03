@@ -148,11 +148,87 @@
 
 
 <h2>🗄️ 데이터베이스 구조</h2>
+## 📊 공공 데이터 API 응답 필드 설명
+
 <table>
+  <thead>
     <tr>
-        <td align="center"><img src="https://github.com/user-attachments/assets/cb74ff7d-e544-46dd-856e-6e0e945e0f17" ></td>
+      <th>필드명</th>
+      <th>설명</th>
     </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>resultCode</code></td>
+      <td>결과 코드</td>
+    </tr>
+    <tr>
+      <td><code>resultMsg</code></td>
+      <td>결과 메시지</td>
+    </tr>
+    <tr>
+      <td><code>numOfRows</code></td>
+      <td>한 페이지 결과 수</td>
+    </tr>
+    <tr>
+      <td><code>pageNo</code></td>
+      <td>페이지 번호</td>
+    </tr>
+    <tr>
+      <td><code>totalCount</code></td>
+      <td>데이터 총 개수</td>
+    </tr>
+    <tr>
+      <td><code>item</code></td>
+      <td>데이터 내용</td>
+    </tr>
+    <tr>
+      <td><code>grid_id</code></td>
+      <td>격자 ID 정보</td>
+    </tr>
+    <tr>
+      <td><code>_left</code></td>
+      <td>좌측 격자 위치</td>
+    </tr>
+    <tr>
+      <td><code>_top</code></td>
+      <td>상단 격자 위치</td>
+    </tr>
+    <tr>
+      <td><code>_right</code></td>
+      <td>우측 격자 위치</td>
+    </tr>
+    <tr>
+      <td><code>_bottom</code></td>
+      <td>하단 격자 위치</td>
+    </tr>
+    <tr>
+      <td><code>_14age</code></td>
+      <td>14세 이하 어린이 유동 인구</td>
+    </tr>
+    <tr>
+      <td><code>_20_50T21_</code></td>
+      <td>20세 이상 50세 미만 여성 유동 인구 (21시-24시 전체 유동 인구 합, 일평균)</td>
+    </tr>
+    <tr>
+      <td><code>_65age_</code></td>
+      <td>65세 이상 유동 인구</td>
+    </tr>
+    <tr>
+      <td><code>_20_60T9_18</code></td>
+      <td>20세 이상 60세 미만 주중 유동 인구 합 (일평균)</td>
+    </tr>
+    <tr>
+      <td><code>weekend</code></td>
+      <td>주말 전체 일별 평균 (토, 일 한정 – 연휴 제외)</td>
+    </tr>
+    <tr>
+      <td><code>addr</code></td>
+      <td>위치명</td>
+    </tr>
+  </tbody>
 </table>
+
 
 <h2>🔄 공공데이터 API </h2>
 <table>
