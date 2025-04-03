@@ -138,7 +138,7 @@
 <h2>🔄 공공데이터 API </h2>
 <table>
     <tr>
-        <td align="center"><img src="https://github.com/user-attachments/assets/cb74ff7d-e544-46dd-856e-6e0e945e0f17" ></td>
+        <td align="center"><img src="https://github.com/user-attachments/assets/93d75dbf-dc12-484c-b612-7a60db5b355c" ></td>
     </tr>
 </table>
 <br>
