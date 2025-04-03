@@ -122,7 +122,7 @@
 <h2>📁 프로젝트 구조</h2>
 <table>
     <tr>
-        <td align="center"><img src="https://github.com/user-attachments/assets/53c4ab94-c674-406a-a269-212b4a940342" ></td>
+        <td align="center"><img src="https://github.com/user-attachments/assets/f34ae621-028f-458b-aa76-3d05476d68a6" ></td>
     </tr>
 </table>
 
