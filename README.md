@@ -16,9 +16,9 @@
 ### 🖥️ 프론트엔드 (Frontend)
 <table>
     <tr>
-        <td align="center"><img src="https://github.com/user-attachments/assets/0d199af1-5d98-47e6-a9d8-e6376916354f" width="50"></td>
-        <td align="center"><img src="https://github.com/user-attachments/assets/5364f0c9-a56e-4519-bfeb-0c7c2377ef2f" width="50"></td>
-        <td align="center"><img src="https://github.com/user-attachments/assets/4588e812-b1c1-4645-beb2-286aa57e3c41" width="50"></td>
+        <td align="center"><img src="https://github.com/user-attachments/assets/240c043e-5d0a-40f5-a364-93fb52315ec9" width="50"></td>
+        <td align="center"><img src="https://github.com/user-attachments/assets/5f15faf6-4e44-448e-b280-03d43afb0b01" width="50"></td>
+        <td align="center"><img src="https://github.com/user-attachments/assets/3e945e58-cc25-4f05-8da1-56ecfc950d29" width="50"></td>
     </tr>
     <tr>
         <td align="center"><b>HTML</b></td>
@@ -55,7 +55,7 @@
 ### 🗄️ 데이터베이스 (Database)
 <table>
     <tr>
-        <td align="center"><img src="https://github.com/user-attachments/assets/3a23b7f3-4f5b-4e68-88f7-62a48a8de6c3" width="50"></td>
+        <td align="center"><img src="https://github.com/user-attachments/assets/fc3295ef-a7ad-4bc6-a680-92acf3598804" width="50"></td>
     </tr>
     <tr>
         <td align="center"><b>MySQL</b></td>
