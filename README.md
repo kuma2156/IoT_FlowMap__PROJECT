@@ -1,4 +1,3 @@
-![image](https://github.com/user-attachments/assets/b80583da-80e7-4d6d-957e-90c917393e38)
 
 <div align="left">
     <h1>🛠 IOT Public Data Project</h1>
@@ -178,13 +177,69 @@
 <!-- 동작 이미지 -->
 <h2>📸 동작 이미지</h2>
 
-<!-- 첫 번째 이미지 -->
+### 초기 화면  
+유동인구 데이터 시각화 메인 페이지  
+
 <table>
     <tr>
-        <td align="center"><img src="https://github.com/user-attachments/assets/296c3127-2581-4263-8074-b7178c52d385" width="750"></td>
+        <td align="center">
+            <img src="https://github.com/user-attachments/assets/2f80dc84-edef-4134-9921-338d635db6f5" width="750">
+        </td>
     </tr>
+</table>  
+
+### 14세 이하  
+특정 지역의 14세 이하 유동인구 분포  
+
+<table>
     <tr>
-        <td align="center">[프로필 페이지] 개인정보</td>
+        <td align="center">
+            <img src="https://github.com/user-attachments/assets/a7dac59a-55eb-4ddd-993c-f0b64f1f70ac" width="750">
+        </td>
+    </tr>
+</table>  
+
+### 20~50대  
+성인 및 중장년층의 유동인구 밀집 지역  
+
+<table>
+    <tr>
+        <td align="center">
+            <img src="https://github.com/user-attachments/assets/29c28ca0-3086-4b0a-bae4-eedd8b6252b6" width="750">
+        </td>
+    </tr>
+</table>  
+
+### 65세 이상  
+노년층의 주요 이동 경로 및 분포  
+
+<table>
+    <tr>
+        <td align="center">
+            <img src="https://github.com/user-attachments/assets/50af9c47-aa78-424c-b9c7-27ce19a51592" width="750">
+        </td>
+    </tr>
+</table>  
+
+### 20~60세 미만  
+경제활동 인구의 주요 활동 지역  
+
+<table>
+    <tr>
+        <td align="center">
+            <img src="https://github.com/user-attachments/assets/c8518ad1-37ca-45f8-bac0-bc54e72c1bab" width="750">
+        </td>
+    </tr>
+</table>  
+
+### 주중 유동인구  
+주중 특정 시간대별 유동인구 변화  
+
+<table>
+    <tr>
+        <td align="center">
+            <img src="https://github.com/user-attachments/assets/a771957d-61f8-4d8e-8e4c-ca7e24dbda7c" width="750">
+        </td>
     </tr>
 </table>
 
