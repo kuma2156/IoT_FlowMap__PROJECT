@@ -129,19 +129,35 @@
 <br>
 
 <!-- 실행 방법 -->
-<h2>⚡ 실행 방법</h2>
-<p>1. 프로젝트 폴더를 다운로드하거나 클론합니다.  </p>
-<p>2. 터미널에서 프로젝트 폴더로 이동한 후, 다음 명령어를 실행합니다.</p>  
-   <p>```sh<br>
-   npm install<br>
-   ```</p>  
-<p>3. 서버를 실행합니다. </p> 
-   <p>```sh<br>
-   node server.js<br>
-   ``` </p> 
-<p>4. 웹 브라우저에서 `http://localhost:3000`으로 접속합니다.</p>
+## ⚡ 실행 방법
 
-<br>
+<table>
+  <tr>
+    <th>단계</th>
+    <th>설명</th>
+  </tr>
+  <tr>
+    <td><b>1</b></td>
+    <td>프로젝트 폴더를 다운로드하거나 클론합니다.</td>
+  </tr>
+  <tr>
+    <td><b>2</b></td>
+    <td>터미널에서 프로젝트 폴더로 이동한 후, 다음 명령어를 실행합니다.<br>
+      <pre><code>npm install</code></pre>
+    </td>
+  </tr>
+  <tr>
+    <td><b>3</b></td>
+    <td>서버를 실행합니다.<br>
+      <pre><code>node server.js</code></pre>
+    </td>
+  </tr>
+  <tr>
+    <td><b>4</b></td>
+    <td>웹 브라우저에서 <a href="http://localhost:3000">http://localhost:3000</a>으로 접속합니다.</td>
+  </tr>
+</table>
+
 
 
 
