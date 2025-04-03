@@ -16,9 +16,9 @@
 ### 🖥️ 프론트엔드 (Frontend)
 <table>
     <tr>
-        <td align="center"><img src="https://github.com/user-attachments/assets/240c043e-5d0a-40f5-a364-93fb52315ec9" width="50"></td>
+        <td align="center"><img src="https://github.com/user-attachments/assets/550267f4-4905-4930-83bb-db7e75cec752" width="50"></td>
         <td align="center"><img src="https://github.com/user-attachments/assets/5f15faf6-4e44-448e-b280-03d43afb0b01" width="50"></td>
-        <td align="center"><img src="https://github.com/user-attachments/assets/3e945e58-cc25-4f05-8da1-56ecfc950d29" width="50"></td>
+        <td align="center"><img src="https://github.com/user-attachments/assets/54e0e622-bca4-4529-b320-84fb136dc654" width="50"></td>
     </tr>
     <tr>
         <td align="center"><b>HTML</b></td>
