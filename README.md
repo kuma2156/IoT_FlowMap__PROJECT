@@ -8,6 +8,9 @@
         <tr>
             <td align="center"><b>IOT 공공데이터를 활용한 서울시 마포구 유동인구 시각화 프로젝트</b></td>
         </tr>
+        <tr>
+            <td align="center"><b>제작기간 | 2024.05-11 ~2024.06-20</b></td>
+        </tr>
     </table>
 </div>
 <div align="left">
