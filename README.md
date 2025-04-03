@@ -56,7 +56,6 @@
 </table>
 
 - **EJS** → 서버 사이드 렌더링 (템플릿 엔진)
-- **Bootstrap / Tailwind CSS** → 스타일링 (선택)
 
 ---
 
