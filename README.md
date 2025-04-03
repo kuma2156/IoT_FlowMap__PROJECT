@@ -35,9 +35,9 @@
 ### ⚙️ 백엔드 (Backend)
 <table>
     <tr>
-        <td align="center"><img src="https://github.com/user-attachments/assets/4bdfd41e-a218-4f2d-86e1-8a83bf59a70f" width="50"></td>
-        <td align="center"><img src="https://github.com/user-attachments/assets/74b1ef21-3d52-4872-8c3e-3c5f7d35c5fb" width="50"></td>
-        <td align="center"><img src="https://github.com/user-attachments/assets/1b9b603e-6a58-42a5-b7c5-5a9c5c845b6e" width="50"></td>
+        <td align="center"><img src="https://github.com/user-attachments/assets/56bfb902-2444-4e04-9d8e-b3fbf88dff4a" width="50"></td>
+        <td align="center"><img src="https://github.com/user-attachments/assets/f7aad108-b61c-41a7-94aa-d36c2e937840" width="50"></td>
+        <td align="center"><img src="https://github.com/user-attachments/assets/5adb96a2-44a7-404c-881d-8c0fb9038062" width="50"></td>
     </tr>
     <tr>
         <td align="center"><b>Node.js</b></td>
