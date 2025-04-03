@@ -126,14 +126,15 @@
 </table>
 
 <br>
----
+
+
 <h2>🗄️ 데이터베이스 구조</h2>
 <table>
     <tr>
         <td align="center"><img src="https://github.com/user-attachments/assets/cb74ff7d-e544-46dd-856e-6e0e945e0f17" ></td>
     </tr>
 </table>
----
+
 <h2>🔄 공공데이터 API </h2>
 <table>
     <tr>
@@ -141,7 +142,7 @@
     </tr>
 </table>
 <br>
----
+
 <!-- 실행 방법 -->
 <h2> ⚡ 실행 방법 </h2>
 
@@ -173,8 +174,6 @@
 </table>
 
 ---
-
-
 <!-- 동작 이미지 -->
 <h2>📸 동작 이미지</h2>
 
