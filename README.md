@@ -69,19 +69,17 @@
 ### ☁️ 배포 및 기타 (Deployment & DevOps)
 <table>
     <tr>
-        <td align="center"><img src="https://github.com/user-attachments/assets/a75cf8c1-20d8-4fcf-9b69-4d9c1d634a90" width="50"></td>
-        <td align="center"><img src="https://github.com/user-attachments/assets/6bfb9184-5489-4b24-9d43-3c25241d53e7" width="50"></td>
+        <td align="center"><img src="https://github.com/user-attachments/assets/0fa64331-57cd-4550-9228-49581d9898e0" width="50"></td>
+        <td align="center"><img src="https://github.com/user-attachments/assets/67ebb9cf-313a-419f-9edc-5654750bad30" width="50"></td>
     </tr>
     <tr>
         <td align="center"><b>PM2</b></td>
-        <td align="center"><b>NGINX</b></td>
+        <td align="center"><b>GitHub</b></td>
     </tr>
 </table>
 
 - **PM2** → Node.js 프로세스 관리  
-- **NGINX** → 프록시 서버 설정 (선택)  
 - **Git / GitHub** → 코드 버전 관리  
-- **AWS (EC2, RDS) / Heroku / Vercel** → 배포 환경  
 
 ---
 
