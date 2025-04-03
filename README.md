@@ -1,7 +1,7 @@
 
 
 <div align="left">
-    <h1>🛠 IOT를 활용한 마포구 유동인구 시각화(공공데이터)</h1>
+    <h1>🛠 IOT Public Data Project</h1>
     <table>
         <tr>
             <td align="center"><img src="https://github.com/user-attachments/assets/e2a679f3-88d7-4a0e-b0fb-fbbd4e6ac7ef" width="550"></td>
