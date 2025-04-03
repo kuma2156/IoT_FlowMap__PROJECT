@@ -183,7 +183,7 @@
   <tr>
     <td><b>3</b></td>
     <td>서버를 실행합니다.<br>
-      <pre><code>node server.js</code></pre>
+      <pre><code>node app.js</code></pre>
     </td>
   </tr>
   <tr>
