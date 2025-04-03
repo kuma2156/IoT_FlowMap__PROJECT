@@ -16,9 +16,15 @@
 ### 🖥️ 프론트엔드 (Frontend)
 <table>
     <tr>
-        <td align="center"><img src="https://github.com/user-attachments/assets/550267f4-4905-4930-83bb-db7e75cec752" width="50"></td>
-        <td align="center"><img src="https://github.com/user-attachments/assets/5f15faf6-4e44-448e-b280-03d43afb0b01" width="50"></td>
-        <td align="center"><img src="https://github.com/user-attachments/assets/54e0e622-bca4-4529-b320-84fb136dc654" width="50"></td>
+        <td align="center">
+            <img src="https://github.com/user-attachments/assets/550267f4-4905-4930-83bb-db7e75cec752" width="64" height="64" style="background:white; padding:10px; border-radius:8px;">
+        </td>
+        <td align="center">
+            <img src="https://github.com/user-attachments/assets/5f15faf6-4e44-448e-b280-03d43afb0b01" width="64" height="64" style="background:white; padding:10px; border-radius:8px;">
+        </td>
+        <td align="center">
+            <img src="https://github.com/user-attachments/assets/54e0e622-bca4-4529-b320-84fb136dc654" width="64" height="64" style="background:white; padding:10px; border-radius:8px;">
+        </td>
     </tr>
     <tr>
         <td align="center"><b>HTML</b></td>
@@ -35,9 +41,15 @@
 ### ⚙️ 백엔드 (Backend)
 <table>
     <tr>
-        <td align="center"><img src="https://github.com/user-attachments/assets/56bfb902-2444-4e04-9d8e-b3fbf88dff4a" width="50"></td>
-        <td align="center"><img src="https://github.com/user-attachments/assets/f7aad108-b61c-41a7-94aa-d36c2e937840" width="50"></td>
-        <td align="center"><img src="https://github.com/user-attachments/assets/5adb96a2-44a7-404c-881d-8c0fb9038062" width="50"></td>
+        <td align="center">
+            <img src="https://github.com/user-attachments/assets/56bfb902-2444-4e04-9d8e-b3fbf88dff4a" width="64" height="64" style="background:white; padding:10px; border-radius:8px;">
+        </td>
+        <td align="center">
+            <img src="https://github.com/user-attachments/assets/f7aad108-b61c-41a7-94aa-d36c2e937840" width="64" height="64" style="background:white; padding:10px; border-radius:8px;">
+        </td>
+        <td align="center">
+            <img src="https://github.com/user-attachments/assets/5adb96a2-44a7-404c-881d-8c0fb9038062" width="64" height="64" style="background:white; padding:10px; border-radius:8px;">
+        </td>
     </tr>
     <tr>
         <td align="center"><b>Node.js</b></td>
@@ -55,7 +67,9 @@
 ### 🗄️ 데이터베이스 (Database)
 <table>
     <tr>
-        <td align="center"><img src="https://github.com/user-attachments/assets/fc3295ef-a7ad-4bc6-a680-92acf3598804" width="50"></td>
+        <td align="center">
+            <img src="https://github.com/user-attachments/assets/fc3295ef-a7ad-4bc6-a680-92acf3598804" width="64" height="64" style="background:white; padding:10px; border-radius:8px;">
+        </td>
     </tr>
     <tr>
         <td align="center"><b>MySQL</b></td>
@@ -69,8 +83,12 @@
 ### ☁️ 배포 및 기타 (Deployment & DevOps)
 <table>
     <tr>
-        <td align="center"><img src="https://github.com/user-attachments/assets/0fa64331-57cd-4550-9228-49581d9898e0" width="50"></td>
-        <td align="center"><img src="https://github.com/user-attachments/assets/67ebb9cf-313a-419f-9edc-5654750bad30" width="50"></td>
+        <td align="center">
+            <img src="https://github.com/user-attachments/assets/0fa64331-57cd-4550-9228-49581d9898e0" width="64" height="64" style="background:white; padding:10px; border-radius:8px;">
+        </td>
+        <td align="center">
+            <img src="https://github.com/user-attachments/assets/67ebb9cf-313a-419f-9edc-5654750bad30" width="64" height="64" style="background:white; padding:10px; border-radius:8px;">
+        </td>
     </tr>
     <tr>
         <td align="center"><b>PM2</b></td>
@@ -81,7 +99,6 @@
 - **PM2** → Node.js 프로세스 관리  
 - **Git / GitHub** → 코드 버전 관리  
 
----
 
 </div>
 
