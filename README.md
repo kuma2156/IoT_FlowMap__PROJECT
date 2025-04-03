@@ -16,7 +16,7 @@
 </div>
 
 <div align="left">
-    <h1>👩‍💻 개발자</h1>
+    <h1>🧑‍💻 개발자</h1>
     <table>
         <tr>
             <td align="center"><img src="https://github.com/user-attachments/assets/61049fd5-5e06-4b17-bb51-d925ea3e68dc" width="250"></td>
